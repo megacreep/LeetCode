@@ -25,8 +25,8 @@ public class SymmetricTree {
             }
             TreeNode left = root.left;
             TreeNode right = root.right;
-            Stack<TreeNode> leftStack = new Stack<>();
-            Stack<TreeNode> rightStack = new Stack<>();
+            Stack<TreeNode> leftStack = new Stack<TreeNode>();
+            Stack<TreeNode> rightStack = new Stack<TreeNode>();
             while (true) {
                 if (left != null && right != null) {
                     if (left.val == right.val) {

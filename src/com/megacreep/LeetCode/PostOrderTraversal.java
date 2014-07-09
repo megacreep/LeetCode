@@ -12,13 +12,12 @@ public class PostOrderTraversal {
             return result;
         }
         TreeNode curr = root;
-        Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
         while (true) {
             if (curr.left != null) {
                 stack.push(curr);
             }
         }
-        return result;
     }
     
     public List<Integer> postorderTraversalRecursive(TreeNode root) {

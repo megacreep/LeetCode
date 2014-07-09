@@ -28,7 +28,7 @@ public class GenerateParentheses {
     
     
     public List<String> generateParenthesisMime(int n) {
-        List<Set<String>> results = new ArrayList<>();
+        List<Set<String>> results = new ArrayList<Set<String>>();
         Set<String> result = new HashSet<String>();
         result.add("()");
         results.add(result);

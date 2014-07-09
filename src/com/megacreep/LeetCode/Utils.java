@@ -1,7 +1,16 @@
 package com.megacreep.LeetCode;
 
+import java.util.List;
+
 public class Utils {
 
+	public static void printArray(int[] array) {
+		for(int num: array) {
+			System.out.print(num + " ");
+		}
+		System.out.println();
+	}
+	
     public static void printMatrix(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             int[] row = matrix[i];
@@ -11,4 +20,11 @@ public class Utils {
             System.out.println();
         }
     }
+
+	public static void printArray(List<Integer> nums) {
+		for (Integer num : nums) {
+			System.out.print(num + " ");
+		}
+		System.out.println();
+	}
 }
