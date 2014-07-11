@@ -27,4 +27,10 @@ public class Utils {
 		}
 		System.out.println();
 	}
+
+    public static void printList(List<List<Integer>> result) {
+        for (List<Integer> list: result) {
+            printArray(list);
+        }
+    }
 }
