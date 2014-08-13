@@ -33,4 +33,10 @@ public class Utils {
             printArray(list);
         }
     }
+
+    public static void printArray(String[] strs) {
+        for(String str : strs) {
+            System.out.println(str);
+        }
+    }
 }
