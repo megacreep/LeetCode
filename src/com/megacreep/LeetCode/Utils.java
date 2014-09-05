@@ -68,7 +68,7 @@ public class Utils {
         return set;
     }
 
-    public static void printArray(int[] searchRange) {
+    public static void printArray(int[] array) {
         // TODO Auto-generated method stub
         
     }
