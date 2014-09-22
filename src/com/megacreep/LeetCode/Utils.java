@@ -69,8 +69,9 @@ public class Utils {
     }
 
     public static void printArray(int[] array) {
-        for (int i : array) {
-            System.out.print(i + " ");
+        for(int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            System.out.print(", ");
         }
         System.out.println();
     }
@@ -83,6 +84,17 @@ public class Utils {
             }
             System.out.println();
         }
-        
+    }
+
+    public static void printTree(TreeNode root) {
+        if (root == null) {
+            System.out.print("#, ");
+        } else {
+            System.out.print(root.val + ", ");
+            if (root.left != null || root.right != null) {
+                printTree(root.left);
+                printTree(root.right);
+            }
+        }
     }
 }
