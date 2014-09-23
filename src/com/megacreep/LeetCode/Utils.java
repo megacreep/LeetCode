@@ -69,8 +69,10 @@ public class Utils {
     }
 
     public static void printArray(int[] array) {
-        // TODO Auto-generated method stub
-        
+        for (int i : array) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
     }
 
     public static void printMatrix(char[][] matrix) {
