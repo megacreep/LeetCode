@@ -2,47 +2,67 @@ package com.megacreep.LeetCode;
 
 public class StrStr {
     public String strStr(String haystack, String needle) {
-        int[] quickback = new int[needle.length()];
-        quickback[0] = -1;
-        for (int i = 1; i < needle.length(); i++) {
-            int back = quickback[i - 1];
-            while (back != -1) {
-                if (needle.charAt(back + 1) == needle.charAt(i)) {
-                    quickback[i] = back + 1;
-                    break;
+        if (haystack == null || needle == null || needle.length() > haystack.length()) {
+            return null;
+        }
+        if (needle.isEmpty()) {
+            return haystack;
+        }
+        int[] table = makeKMPTable(needle);
+        int start = 0;
+        int offset = 0;
+        while (start + offset < haystack.length() && offset < needle.length()) {
+            if (haystack.charAt(start + offset) == needle.charAt(offset)) {
+                offset++;
+            } else {
+                if (table[offset] == -1) {
+                    start = start + 1;
+                    offset = 0;
                 } else {
-                    back = quickback[back];
+                    start = start + offset - table[offset];
+                    offset = table[offset];
                 }
-            }
-            if (back == -1) {
-                quickback[i] = -1;
             }
         }
 
-        Utils.printArray(quickback);
-//
-//        int start = 0;
-//        while (start < haystack.length()) {
-//            int index = 0;
-//            while (index < needle.length()) {
-//                if (haystack.charAt(start + index) == needle.charAt(index)) {
-//                    index++;
-//                } else {
-//
-//                }
-//            }
-//            if (index == needle.length()) {
-//                break;
-//            }
-//        }
-//        return start == haystack.length() ? null : haystack.substring(start);
-        return null;
+        if (offset == needle.length()) {
+            return haystack.substring(start);
+        } else {
+            return null;
+        }
+    }
+
+    private int[] makeKMPTable(String S) {
+        int[] table = new int[S.length()];
+
+        int pos = 2;
+        int i = 0;
+        table[0] = -1;
+        if (S.length() == 1) {
+            return table;
+        }
+        table[1] = 0;
+
+        while (pos < S.length()) {
+            if (S.charAt(pos - 1) == S.charAt(i)) {
+                i++;
+                table[pos] = i;
+                pos++;
+            } else if (i > 0) {
+                i = table[i];
+            } else {
+                table[pos] = 0;
+                pos++;
+            }
+        }
+
+        return table;
     }
 
     public static void main(String[] args) {
         String haystack = "haystack";
-        String needle = "aaaaaaaa";
+        String needle = "abcdabd";
 
-        new StrStr().strStr(haystack, needle);
+        System.out.println(new StrStr().strStr(haystack, needle));
     }
 }
